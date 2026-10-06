@@ -11,13 +11,11 @@ import { useMutation } from '@tanstack/react-query'
 import { AlertCircle, CheckCircle2, Send } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { company } from '@/data/company'
-import { services } from '@/data/services'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { cn } from '@/lib/cn'
 import { sendContactMessage, type ContactMessage } from '@/lib/contact-service'
 import { validateContact, type ContactErrors } from '@/lib/validation'
 
-const t = ui.form
 const MIN_FILL_TIME_MS = 3000
 
 const empty: ContactMessage = {
@@ -38,6 +36,7 @@ interface FieldProps {
 }
 
 function Field({ id, label, error, optional, children }: FieldProps) {
+  const t = useContent().ui.form
   const errorId = `${id}-error`
   return (
     <div>
@@ -70,6 +69,8 @@ const inputClass = (invalid: boolean) =>
   )
 
 export function ContactForm() {
+  const { ui, services } = useContent()
+  const t = ui.form
   const uid = useId()
   const [values, setValues] = useState<ContactMessage>(empty)
   const [errors, setErrors] = useState<ContactErrors>({})

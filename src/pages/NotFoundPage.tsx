@@ -2,11 +2,11 @@ import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { DiagonalDivider } from '@/components/ui/DiagonalDivider'
-import { pageMeta } from '@/data/pages'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { useSeo } from '@/hooks/useSeo'
 
 export function NotFoundPage() {
+  const { ui, pageMeta } = useContent()
   useSeo(pageMeta.notFound)
 
   return (

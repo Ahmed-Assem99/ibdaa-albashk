@@ -6,26 +6,20 @@ import { Container } from '@/components/ui/Container'
 import { GalleryGrid } from '@/components/ui/GalleryGrid'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { gallery } from '@/data/gallery'
-import { pageMeta, projectsPage } from '@/data/pages'
-import {
-  projectReferences,
-  projectReferencesNote,
-  projectReferencesTitle,
-  projects,
-} from '@/data/projects'
-import { categoryLabels } from '@/data/services'
+import { useContent } from '@/i18n/useLocale'
 import { useSeo } from '@/hooks/useSeo'
 import { cn } from '@/lib/cn'
-import type { ServiceCategory } from '@/types/content'
+import { serviceCategories, type ServiceCategory } from '@/types/content'
 
-const categories = Object.keys(categoryLabels) as ServiceCategory[]
+const categories: readonly ServiceCategory[] = serviceCategories
 
 function isCategory(value: string | null): value is ServiceCategory {
   return value !== null && (categories as string[]).includes(value)
 }
 
 export function ProjectsPage() {
+  const { ui, pageMeta, pages, projects, projectReferences, categoryLabels, gallery } = useContent()
+  const projectsPage = pages.projects
   useSeo(pageMeta.projects)
   const [params, setParams] = useSearchParams()
   const param = params.get('category')
@@ -51,17 +45,17 @@ export function ProjectsPage() {
         title={projectsPage.title}
         highlight={projectsPage.highlight}
         intro={projectsPage.intro}
-        breadcrumbs={[{ label: 'Projects' }]}
+        breadcrumbs={[{ label: ui.pages.projects }]}
       />
 
       <section aria-labelledby="project-list-title" className="bg-white pt-4 pb-24">
         <Container>
           <h2 id="project-list-title" className="sr-only">
-            Project list
+            {ui.projectsList.title}
           </h2>
           <div
             role="group"
-            aria-label="Filter projects by category"
+            aria-label={ui.projectsList.filterLabel}
             className="flex flex-wrap gap-2"
           >
             {filters.map((filter) => {
@@ -98,7 +92,7 @@ export function ProjectsPage() {
           </div>
 
           <p aria-live="polite" className="sr-only">
-            {visible.length} projects shown
+            {ui.projectsList.shown(visible.length)}
           </p>
 
           {visible.length > 0 ? (
@@ -117,10 +111,10 @@ export function ProjectsPage() {
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
               <span>
                 <span className="block text-sm font-semibold tracking-wider text-charcoal-900 uppercase">
-                  {projectReferencesTitle} ({projectReferences.length})
+                  {projectReferences.title} ({projectReferences.items.length})
                 </span>
                 <span className="mt-1 block text-sm text-charcoal-600">
-                  {projectReferencesNote}
+                  {projectReferences.note}
                 </span>
               </span>
               <ChevronDown
@@ -133,21 +127,21 @@ export function ProjectsPage() {
                 <thead className="bg-charcoal-900 text-xs tracking-wider text-gold-100 uppercase">
                   <tr>
                     <th scope="col" className="px-4 py-3 text-start">
-                      No.
+                      {ui.projectsList.table.no}
                     </th>
                     <th scope="col" className="px-4 py-3 text-start">
-                      Project
+                      {ui.projectsList.table.project}
                     </th>
                     <th scope="col" className="px-4 py-3 text-start">
-                      Place
+                      {ui.projectsList.table.place}
                     </th>
                     <th scope="col" className="px-4 py-3 text-start">
-                      Client
+                      {ui.projectsList.table.client}
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-charcoal-100">
-                  {projectReferences.map((ref) => (
+                  {projectReferences.items.map((ref) => (
                     <tr key={ref.no} className="odd:bg-charcoal-50">
                       <td className="px-4 py-3 text-charcoal-600">{ref.no}</td>
                       <td className="px-4 py-3 text-charcoal-900">{ref.name}</td>

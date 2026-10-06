@@ -1,4 +1,4 @@
-import type { Capability, Service, ServiceCategory } from '../types/content'
+import type { Capability, Service, ServiceCategory } from '../../types/content'
 
 /** Human-readable labels for each category (used by filters, badges and cards). */
 export const categoryLabels: Record<ServiceCategory, string> = {

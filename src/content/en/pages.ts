@@ -1,4 +1,4 @@
-import type { PageMeta } from '../types/content'
+import type { PageMeta } from '../../types/content'
 
 /** Per-page <title> and meta description. */
 export const pageMeta = {
@@ -55,6 +55,7 @@ export const contactPage = {
   intro: 'Tell us about your project and our team will get back to you.',
   detailsTitle: 'Get in touch',
   formTitle: 'Send us a message',
+  formHighlight: 'message',
   profileTitle: 'Request for prequalification',
   profileText:
     'Download our company profile with our services, organisation, equipment and project references.',

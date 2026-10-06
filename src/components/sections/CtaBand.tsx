@@ -4,10 +4,12 @@ import { Container } from '@/components/ui/Container'
 import { Highlight } from '@/components/ui/Highlight'
 import { Reveal } from '@/components/ui/Reveal'
 import { company } from '@/data/company'
-import { finalCta } from '@/data/home'
+import { useContent } from '@/i18n/useLocale'
 
 /** Closing call to action, shared by several pages. */
 export function CtaBand() {
+  const { home, ui } = useContent()
+  const { finalCta } = home
   return (
     <section aria-labelledby="cta-title" className="relative overflow-hidden surface-dark">
       <div
@@ -38,7 +40,7 @@ export function CtaBand() {
               size="lg"
               icon={<Download className="size-4" />}
             >
-              {finalCta.secondaryCta}
+              {ui.companyProfile}
             </Button>
           </div>
         </Reveal>

@@ -1,4 +1,4 @@
-import type { CompanyDocument } from '../types/content'
+import type { CompanyDocument } from '../../types/content'
 
 /**
  * Company documents and credentials shown on the About page.

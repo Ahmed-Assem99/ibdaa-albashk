@@ -1,7 +1,4 @@
-/**
- * Interface strings (buttons, labels, messages). Keeping them here, together with the
- * page data files, means an Arabic version can be added by providing translated copies.
- */
+/** Interface strings (buttons, labels, messages). The Arabic version is in src/content/ar/ui.ts. */
 export const ui = {
   skipToContent: 'Skip to content',
   menuOpen: 'Open menu',
@@ -9,6 +6,25 @@ export const ui = {
   primaryNavLabel: 'Main',
   contactCta: 'Contact Us',
   home: 'Home',
+  quote: (text: string) => `“${text}”`,
+  listSeparator: ', ',
+  breadcrumb: 'Breadcrumb',
+  pages: { projects: 'Projects', about: 'About', contact: 'Contact' },
+  companyProfile: 'Company profile (PDF)',
+  projectsList: {
+    title: 'Project list',
+    filterLabel: 'Filter projects by category',
+    shown: (n: number) => `${n} projects shown`,
+    table: { no: 'No.', project: 'Project', place: 'Place', client: 'Client' },
+  },
+  about: {
+    visionMissionLabel: 'Vision and mission',
+    valuesTitle: 'Our values',
+    valuesHighlight: 'values',
+    workforce: 'Workforce',
+    fleet: 'Equipment fleet',
+    maintenance: 'Workshops & maintenance',
+  },
   backToProjects: 'All projects',
   viewProject: 'View project',
   status: { completed: 'Completed', ongoing: 'Ongoing' },
@@ -42,6 +58,7 @@ export const ui = {
     email: 'Email',
     hours: 'Working hours',
     mapTitle: 'Office location map',
+    sectionLabel: 'Contact details and form',
   },
   form: {
     name: 'Full name',
@@ -83,4 +100,4 @@ export const ui = {
     text: 'The page you’re looking for doesn’t exist or has moved.',
     cta: 'Back to home',
   },
-} as const
+}

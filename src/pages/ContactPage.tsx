@@ -4,15 +4,16 @@ import { Container } from '@/components/ui/Container'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { company } from '@/data/company'
-import { contactPage, pageMeta } from '@/data/pages'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { useSeo } from '@/hooks/useSeo'
 
 export function ContactPage() {
+  const { ui, pageMeta, pages, company: text } = useContent()
+  const contactPage = pages.contact
   useSeo(pageMeta.contact)
 
   const details = [
-    { icon: MapPin, label: ui.contact.address, content: company.address.lines.join(', ') },
+    { icon: MapPin, label: ui.contact.address, content: text.addressLines.join(ui.listSeparator) },
     {
       icon: Phone,
       label: ui.contact.phone,
@@ -31,7 +32,7 @@ export function ContactPage() {
         </a>
       ),
     },
-    { icon: Clock, label: ui.contact.hours, content: company.workingHours },
+    { icon: Clock, label: ui.contact.hours, content: text.workingHours },
   ]
 
   return (
@@ -40,10 +41,10 @@ export function ContactPage() {
         title={contactPage.title}
         highlight={contactPage.highlight}
         intro={contactPage.intro}
-        breadcrumbs={[{ label: 'Contact' }]}
+        breadcrumbs={[{ label: ui.pages.contact }]}
       />
 
-      <section aria-label="Contact details and form" className="bg-white pb-24">
+      <section aria-label={ui.contact.sectionLabel} className="bg-white pb-24">
         <Container className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           <div className="space-y-6">
             <div className="surface-dark p-8">
@@ -84,7 +85,7 @@ export function ContactPage() {
           </div>
 
           <div className="relative">
-            <SectionHeading title={contactPage.formTitle} highlight="message" />
+            <SectionHeading title={contactPage.formTitle} highlight={contactPage.formHighlight} />
             <div className="mt-10">
               <ContactForm />
             </div>

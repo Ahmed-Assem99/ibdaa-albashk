@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import type { ImageAsset } from '@/types/content'
 
 interface LightboxProps {
@@ -12,6 +12,7 @@ interface LightboxProps {
 
 /** Accessible image viewer built on the native <dialog> element (focus trap and Esc for free). */
 export function Lightbox({ images, index, onChange }: LightboxProps) {
+  const { ui } = useContent()
   const dialogRef = useRef<HTMLDialogElement>(null)
   const image = index === null ? undefined : images[index]
   const count = images.length

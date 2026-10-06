@@ -2,9 +2,10 @@ import { LazyMotion, MotionConfig, domAnimation } from 'motion/react'
 import { Outlet, ScrollRestoration } from 'react-router'
 import { Footer } from '@/components/layout/Footer'
 import { Navbar } from '@/components/layout/Navbar'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 
 export function RootLayout() {
+  const { ui } = useContent()
   return (
     <LazyMotion features={domAnimation} strict>
       <MotionConfig reducedMotion="user">

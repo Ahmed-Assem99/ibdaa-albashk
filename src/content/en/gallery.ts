@@ -1,4 +1,4 @@
-import type { ImageAsset } from '../types/content'
+import type { ImageAsset } from '../../types/content'
 
 const G = '/images/gallery'
 const T = '/images/team'

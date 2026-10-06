@@ -7,14 +7,11 @@ import { Highlight } from '@/components/ui/Highlight'
 import { Img } from '@/components/ui/Img'
 import { Reveal } from '@/components/ui/Reveal'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { featuredSection, safetyTeaser, servicesSection, statsSection } from '@/data/home'
-import { partners, partnersHeading } from '@/data/partners'
-import { featuredProjects } from '@/data/projects'
-import { capabilities, services } from '@/data/services'
-import { stats } from '@/data/stats'
+import { useContent } from '@/i18n/useLocale'
 import type { CapabilityIcon } from '@/types/content'
 
 export function TrustStrip() {
+  const { partners } = useContent()
   return (
     <section aria-labelledby="partners-title" className="bg-white">
       <Container className="flex flex-col items-center gap-6 py-10 lg:flex-row lg:gap-12">
@@ -22,14 +19,24 @@ export function TrustStrip() {
           id="partners-title"
           className="shrink-0 text-xs font-semibold tracking-[0.24em] text-gold-700 uppercase"
         >
-          {partnersHeading}
+          {partners.heading}
         </h2>
         <ul className="flex flex-1 flex-wrap items-center justify-center gap-x-10 gap-y-4 lg:justify-between">
-          {partners.map((partner) => (
-            <li key={partner.name} className="text-center">
-              <span className="block text-xl font-extrabold tracking-[0.14em] text-charcoal-700 uppercase sm:text-2xl">
-                {partner.name}
-              </span>
+          {partners.list.map((partner) => (
+            <li key={partner.name} className="group flex flex-col items-center text-center">
+              {partner.logo ? (
+                <Img
+                  image={partner.logo}
+                  className="h-10 w-auto max-w-36 object-contain opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 sm:h-12"
+                />
+              ) : (
+                <span
+                  lang="en"
+                  className="block text-xl font-extrabold tracking-[0.14em] text-charcoal-700 uppercase sm:text-2xl"
+                >
+                  {partner.name}
+                </span>
+              )}
               <span className="mt-1 block text-[0.6875rem] tracking-wider text-charcoal-600 uppercase">
                 {partner.sector}
               </span>
@@ -49,6 +56,8 @@ const capabilityIcons: Record<CapabilityIcon, typeof Building2> = {
 }
 
 export function ServicesSection() {
+  const { home, services, capabilities } = useContent()
+  const { servicesSection } = home
   return (
     <section
       aria-labelledby="services-title"
@@ -98,6 +107,8 @@ export function ServicesSection() {
 }
 
 export function StatsBand() {
+  const { home, stats } = useContent()
+  const { statsSection } = home
   return (
     <section aria-labelledby="stats-title" className="relative bg-gold-gradient">
       <h2 id="stats-title" className="sr-only">
@@ -125,6 +136,8 @@ export function StatsBand() {
 }
 
 export function FeaturedProjects() {
+  const { home, projects } = useContent()
+  const { featuredSection } = home
   return (
     <section aria-labelledby="featured-title" className="bg-white py-24 sm:py-28">
       <Container>
@@ -145,13 +158,15 @@ export function FeaturedProjects() {
           </Button>
         </div>
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProjects.map((project, i) => (
-            <li key={project.slug}>
-              <Reveal delay={i * 0.08} className="h-full">
-                <ProjectCard project={project} />
-              </Reveal>
-            </li>
-          ))}
+          {projects
+            .filter((p) => p.featured)
+            .map((project, i) => (
+              <li key={project.slug}>
+                <Reveal delay={i * 0.08} className="h-full">
+                  <ProjectCard project={project} />
+                </Reveal>
+              </li>
+            ))}
         </ul>
       </Container>
     </section>
@@ -159,6 +174,8 @@ export function FeaturedProjects() {
 }
 
 export function SafetyTeaser() {
+  const { home } = useContent()
+  const { safetyTeaser } = home
   return (
     <section aria-labelledby="safety-title" className="bg-charcoal-50 py-24 sm:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">

@@ -1,4 +1,4 @@
-import type { ImageAsset, OrgUnit, Value } from '../types/content'
+import type { ImageAsset, OrgUnit, Value } from '../../types/content'
 
 export const story = {
   title: 'Our story',
@@ -81,10 +81,9 @@ export const capabilitiesSection = {
     'Site workshops sized to the equipment and scope of each project',
     'Periodic and preventive maintenance, adjustments and repairs',
   ],
-  // TODO: brochure figures — "Equipment: 100 heavy machinery including vehicles" and
-  // "Plants: 2 asphalt and concrete plants". Confirm before publishing.
+  // TODO: the asphalt & concrete plants figure is from the brochure. Confirm it is current.
   figures: [
-    { value: '100', label: 'Heavy machines & vehicles' },
+    { value: '+15', label: 'Heavy machines & vehicles' },
     { value: '2', label: 'Asphalt & concrete plants' },
   ],
 }
@@ -165,4 +164,15 @@ export const orgChart = {
       roles: ['Purchasing Department', 'Purchase Assistants & Local Purchasers'],
     },
   ] satisfies OrgUnit[],
+}
+
+export const about = {
+  story,
+  vision,
+  mission,
+  valuesIntro,
+  values,
+  capabilitiesSection,
+  hse,
+  orgChart,
 }

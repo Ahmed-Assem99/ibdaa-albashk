@@ -1,9 +1,8 @@
-import { Link } from 'react-router'
+import { Link } from '@/i18n/Link'
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Img } from '@/components/ui/Img'
-import { categoryLabels } from '@/data/services'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { cn } from '@/lib/cn'
 import type { Project } from '@/types/content'
 
@@ -13,6 +12,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const { ui, categoryLabels } = useContent()
   return (
     <article
       className={cn(

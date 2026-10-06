@@ -1,10 +1,8 @@
-import { Link } from 'react-router'
+import { Link } from '@/i18n/Link'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { company } from '@/data/company'
-import { mainNav } from '@/data/navigation'
-import { services } from '@/data/services'
-import { ui } from '@/data/ui'
+import { useContent, useLocale } from '@/i18n/useLocale'
 import { Logo } from './Logo'
 
 const linkClass = 'text-sm text-charcoal-200 transition-colors hover:text-gold-300'
@@ -18,6 +16,8 @@ function FooterHeading({ children }: { children: string }) {
 }
 
 export function Footer() {
+  const { locale } = useLocale()
+  const { ui, nav, services, company: text } = useContent()
   const year = new Date().getFullYear()
 
   return (
@@ -33,10 +33,10 @@ export function Footer() {
             <Logo />
           </Link>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-charcoal-200">
-            {company.description}
+            {text.description}
           </p>
           <p className="mt-5 text-sm font-semibold tracking-[0.16em] text-gold-300 uppercase">
-            {company.tagline}
+            {text.tagline}
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export function Footer() {
             {ui.footer.quickLinks}
           </h2>
           <ul className="space-y-3">
-            {mainNav.map((item) => (
+            {nav.map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className={linkClass}>
                   {item.label}
@@ -77,7 +77,7 @@ export function Footer() {
             <p className="flex gap-3 text-sm text-charcoal-200">
               <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-gold-300" />
               <span>
-                {company.address.lines.map((line) => (
+                {text.addressLines.map((line) => (
                   <span key={line} className="block">
                     {line}
                   </span>
@@ -97,9 +97,10 @@ export function Footer() {
       </Container>
       <div className="relative border-t border-white/10">
         <Container className="flex flex-col gap-2 py-6 text-xs text-charcoal-400 sm:flex-row sm:items-center sm:justify-between">
-          <p>{ui.footer.rights(year, company.legalName)}</p>
-          <p lang="ar" dir="rtl">
-            {company.legalNameAr}
+          <p>{ui.footer.rights(year, locale === 'ar' ? company.legalNameAr : company.legalName)}</p>
+          {/* The legal name in the other language. */}
+          <p lang={locale === 'ar' ? 'en' : 'ar'} dir={locale === 'ar' ? 'ltr' : 'rtl'}>
+            {locale === 'ar' ? company.legalName : company.legalNameAr}
           </p>
         </Container>
       </div>

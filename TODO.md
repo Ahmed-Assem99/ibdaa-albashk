@@ -2,41 +2,36 @@
 
 Everything below is either a **placeholder** or an **assumption** I made from the company profile PDF and your brief. Nothing has been invented. Where real data was missing, the site shows a clearly marked placeholder (`XX`, "PHOTO PLACEHOLDER" or "TODO: confirm …").
 
-Search the code for `TODO` to find each item in place (`grep -rn TODO src`). Project-level notes are in the `todo` field of each entry in `src/data/projects.ts`.
+Search the code for `TODO` to find each item in place (`grep -rn TODO src`). Project-level notes are in the `todo` field of each entry in `src/content/en/projects.ts`. Copy is in `src/content/en/` (English) and `src/content/ar/` (Arabic); contact details are in `src/data/company.ts`.
 
 ---
 
 ## 1. Must fix before going live
 
-| #   | Item                                                                                                                                                      | Where                                                  | Current value                     |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | --------------------------------- |
-| 1.1 | **Production domain** (used for canonical URLs, sitemap, robots.txt and social previews)                                                                  | `src/data/company.ts` → `siteUrl`                      | `https://www.example.com`         |
-| 1.2 | **Office address.** The brochure lists Baghdad – Almansoor; main operations are in Basra. Which address should the site show?                             | `company.ts` → `address`                               | Almansoor, Baghdad, Iraq          |
-| 1.3 | **Public email.** The brochure lists both `ibdae.albashk@gmail.com` and `info@albashkcompany.com`. A domain email looks more professional.                | `company.ts` → `email`                                 | ibdae.albashk@gmail.com           |
-| 1.4 | **Working hours**                                                                                                                                         | `company.ts` → `workingHours`                          | Sunday – Thursday · XX:00 – XX:00 |
-| 1.5 | **Map location.** Replace with the exact office pin (Google Maps → Share → Embed a map → copy the `src`).                                                 | `company.ts` → `mapEmbedUrl`                           | Al Mansour, Baghdad (area search) |
-| 1.6 | **Company profile PDF.** The download is a one-page placeholder. Add the final PDF, ideally a web-optimised version without personal ID details.          | `public/docs/ibdaa-albashq-company-profile.pdf`        | Placeholder                       |
-| 1.7 | **Contact form delivery.** It currently falls back to opening the visitor's email app. Set `VITE_CONTACT_ENDPOINT` (e.g. Formspree) for real submissions. | `.env` / Vercel env vars, `src/lib/contact-service.ts` | mailto fallback                   |
-| 1.8 | **Founding year.** The CEO message says 2015; the registration documents are dated 2018. The site currently avoids stating a year.                        | `src/data/about.ts`, `src/data/stats.ts`               | Not stated                        |
+| #   | Item                                                                                                                                                      | Where                                                  | Current value                         |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------- |
+| 1.1 | **Production domain** (used for canonical URLs, sitemap, robots.txt and social previews)                                                                  | `src/data/company.ts` → `siteUrl`                      | `https://www.example.com`             |
+| 1.2 | **Office address.** The brochure lists Baghdad – Almansoor; main operations are in Basra. Which address should the site show?                             | `src/content/{en,ar}/company.ts` → `addressLines`      | Almansoor, Baghdad, Iraq              |
+| 1.3 | **Working days.** Hours are confirmed as 9 AM – 5 PM; I assumed Sunday – Thursday.                                                                        | `src/content/{en,ar}/company.ts` → `workingHours`      | Sunday – Thursday · 9:00 AM – 5:00 PM |
+| 1.4 | **Map location.** Replace with the exact office pin (Google Maps → Share → Embed a map → copy the `src`).                                                 | `company.ts` → `mapEmbedUrl`                           | Al Mansour, Baghdad (area search)     |
+| 1.5 | **Company profile PDF.** The download is a one-page placeholder. Add the final PDF, ideally a web-optimised version without personal ID details.          | `public/docs/ibdaa-albashq-company-profile.pdf`        | Placeholder                           |
+| 1.6 | **Contact form delivery.** It currently falls back to opening the visitor's email app. Set `VITE_CONTACT_ENDPOINT` (e.g. Formspree) for real submissions. | `.env` / Vercel env vars, `src/lib/contact-service.ts` | mailto fallback                       |
+| 1.7 | **Founding year.** The CEO message says 2015; the registration documents are dated 2018. The site currently avoids stating a year.                        | `src/content/{en,ar}/about.ts`                         | Not stated                            |
 
 ## 2. Branding and wording to confirm
 
-- **Tagline:** shown exactly as in the brochure, "Together We Building Iraq". Consider "Together, We Build Iraq". (`company.ts` → `tagline`)
+- **Tagline:** English is shown exactly as in the brochure, "Together We Building Iraq". Consider "Together, We Build Iraq". The Arabic version is "معاً نبني العراق". (`src/content/{en,ar}/company.ts` → `tagline`)
 - **English name spelling:** the site uses "Ibdaa Albashq". The brochure and documents also use "Albashk", "Albashik" and "Albasshik". Pick one.
 - **Arabic legal name:** the site uses "شركة إبداع الباشق للمقاولات العامة والتجارة العامة والنقل العام المحدودة". The documents use both "ابداع" and "أبداع" and differ slightly in word order. Confirm the official form. (`company.ts` → `legalNameAr`)
 - **Logo:** `src/assets/logo.svg` is the eagle mark traced from the PDF's vector artwork. Swap it for the official master file if you have one.
 
-## 3. Placeholder numbers shown on the site
+## 3. Key numbers
 
-| Item                      | Where                                      | Current                                                                                                |
-| ------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| Years of experience       | Home → key numbers (`src/data/stats.ts`)   | `XX+`                                                                                                  |
-| Projects delivered        | Home → key numbers                         | `XX+`                                                                                                  |
-| Skilled workforce         | Home → key numbers                         | `XX+`                                                                                                  |
-| Heavy machines & vehicles | Home → key numbers, About → capabilities   | `100` (from the brochure: "Equipment: 100 heavy machinery including vehicles"). Confirm it is current. |
-| Asphalt & concrete plants | About → capabilities (`src/data/about.ts`) | `2` (from the brochure). Confirm.                                                                      |
+Updated with your figures: **+10** years of experience, **+25** projects delivered, **+15** heavy machines and vehicles, **+500** skilled workforce (`src/content/{en,ar}/stats.ts`). The About page's equipment figure now also shows **+15** (the brochure said 100).
 
-## 4. Projects (`src/data/projects.ts`)
+- **Asphalt & concrete plants** on the About page still shows `2`, from the brochure. Confirm it is current. (`src/content/en/about.ts`)
+
+## 4. Projects (`src/content/en/projects.ts`, Arabic text in `src/content/ar/projects.ts`)
 
 ### Placeholder projects (visible on the site with "TODO: confirm details")
 
@@ -70,13 +65,15 @@ The 22-row "Projects of Subcontract with Eshraqat Al Iraq Company" table is copi
 - That it may be published and how our role should be described.
 - Brochure oddities kept as-is: item 8 (Habbaniyah airport) lists "Halfaya" as the place; items 20 and 21 are identical; "Coasls" (item 15) may be a typo.
 
-## 5. Partners strip ("Experience alongside")
+## 5. Partners strip ("Experience alongside", under the hero)
 
-`src/data/partners.ts`: Kalpataru, BP, Eni, ZAIN, and **Kuwait Energy** (added from the brochure documents; remove it if you prefer). The sector labels under each name (e.g. "Power transmission & solar" for Kalpataru) are my wording. Confirm or edit. No logos are used; add official logos only with permission.
+`src/content/en/partners.ts`: Kalpataru, BP, Eni, ZAIN, and **Kuwait Energy** (added from the brochure documents; remove it if you prefer). The sector labels under each name (e.g. "Power transmission & solar" for Kalpataru) are my wording. Confirm or edit.
+
+**Logos:** you asked for each company's logo. I couldn't download them: this environment's network policy blocks Wikimedia Commons and the image CDNs, and none of these companies is in the icon packages available through npm. I also didn't redraw anyone's trademark by hand. The strip already supports logos: send me the official files (SVG or transparent PNG), or put them in `public/images/partners/` and add a `logo` to each entry (see IMAGES.md). They display in grayscale and turn to full colour on hover. Until then each company shows as a styled wordmark. Please confirm you have permission to use each logo.
 
 ## 6. Copy assumptions
 
-- **Solar service scope** (`src/data/services.ts`): "EPC construction support, site preparation and civil works, electrical works". Confirm the actual scope.
+- **Solar service scope** (`src/content/{en,ar}/services.ts`): "EPC construction support, site preparation and civil works, electrical works". Confirm the actual scope.
 - **Safety teaser:** "Every shift starts with a toolbox talk" and the HSE bullet "Daily toolbox talks and safety training for all site crews" are based on the many toolbox-talk photos in the brochure. Confirm they are accurate.
 - **Brochure claims I removed** because they couldn't be verified. Re-add any you can support:
   - "turnkey projects worth several billion dollars"
@@ -88,22 +85,29 @@ The 22-row "Projects of Subcontract with Eshraqat Al Iraq Company" table is copi
 
 ## 7. Documents (About → Company documents)
 
-All six cards show "Available on request" (`src/data/documents.ts`). Decide which to publish. The originals contain personal ID details and signatures, so **redact before uploading**. Put PDFs in `public/docs/` and set each card's `file`.
+All six cards show "Available on request" (`src/content/en/documents.ts`). Decide which to publish. The originals contain personal ID details and signatures, so **redact before uploading**. Put PDFs in `public/docs/` and set each card's `file`.
 
 ## 8. Images
 
 See [`IMAGES.md`](IMAGES.md) for the full list. In summary:
 
-- **Hero** (`/images/hero/hero.webp`) is a generated "tower at dusk" illustration. Replace it with a real high-resolution photo (1920×1080).
+- **Hero:** redesigned with no background image. Three real site photos sit in angled gold frames. They come from the PDF, so they are low-res; replace them with sharp portrait photos when available (see IMAGES.md → Home hero photos).
 - **Placeholders (7):** solar service image, and covers for the solar, BP, Eni, caravans, Al-Diwaniyah road and Basra stations projects.
 - **Low-resolution photos:** all real photos come from the PDF and are small (mostly 200–540 px). Please send the originals.
 - **Photo-to-project mapping** was inferred from the brochure page layout (see the per-project notes above).
 - Stock photos in the brochure were not used (unknown licence).
 
-## 9. Not done / optional next steps
+## 9. Arabic version
 
-- **Arabic version with an EN/AR toggle:** not implemented. The code is ready for it (all copy in data files, logical CSS properties, RTL-aware icons). See README → Arabic / RTL. It needs translated copy, ideally reviewed by a native speaker.
+- **Translation review:** all Arabic copy (`src/content/ar/`) was written by me in Modern Standard Arabic, with Iraqi month names for dates. Please have a native speaker review it before launch, especially technical terms, client names and project titles.
+- **Arabic name forms used:** "إبداع الباشق" (short name), "معاً نبني العراق" (tagline), "كويت إنرجي البصرة المحدودة", "شركة أثير للاتصالات – العراق (زين العراق)", "الشركة الصينية للهندسة النفطية المحدودة", "شركة إشراقات العراق". Confirm the official Arabic names.
+- **Brand names** (Kalpataru, BP, Eni, ZAIN, Kuwait Energy) stay in Latin script in the partners strip.
+- **Company profile PDF:** both languages link to the same file. Add an Arabic profile if you have one.
+
+## 10. Not done / optional next steps
+
 - **Team page / leadership profiles:** no names or photos were provided, so none are shown (the org chart lists roles only).
 - **Analytics** (e.g. Vercel Analytics or Plausible): not added.
 - **Social media links:** none provided; add them to the footer if wanted.
 - **Privacy policy:** consider adding one before turning on a form endpoint.
+- **Remembering the language choice:** the language comes from the URL (`/ar/…`); the site doesn't redirect returning visitors to their last language.

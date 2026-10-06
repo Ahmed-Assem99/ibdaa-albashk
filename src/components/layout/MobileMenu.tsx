@@ -1,10 +1,10 @@
 import type { Ref } from 'react'
-import { NavLink } from 'react-router'
+import { NavLink } from '@/i18n/Link'
 import { Mail, Phone, X } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { company } from '@/data/company'
-import { mainNav } from '@/data/navigation'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
+import { LanguageSwitch } from '@/i18n/LanguageSwitch'
 import { cn } from '@/lib/cn'
 import { Logo } from './Logo'
 
@@ -14,6 +14,7 @@ interface MobileMenuProps {
 
 /** Slide-in navigation panel for small screens, built on the native <dialog>. */
 export function MobileMenu({ ref }: MobileMenuProps) {
+  const { ui, nav } = useContent()
   const close = (e: React.SyntheticEvent) => {
     e.currentTarget.closest('dialog')?.close()
   }
@@ -43,7 +44,7 @@ export function MobileMenu({ ref }: MobileMenuProps) {
         </div>
         <nav aria-label={ui.primaryNavLabel} className="flex-1 px-5 pt-6">
           <ul className="flex flex-col">
-            {mainNav.map((item) => (
+            {nav.map((item) => (
               <li key={item.to} className="border-b border-white/10">
                 <NavLink
                   to={item.to}
@@ -64,6 +65,7 @@ export function MobileMenu({ ref }: MobileMenuProps) {
           <Button to="/contact" onClick={close} className="mt-8 w-full" size="lg">
             {ui.contactCta}
           </Button>
+          <LanguageSwitch className="mt-6 text-base" />
         </nav>
         <div className="space-y-3 px-5 py-6 text-sm text-charcoal-200">
           <a href={company.phone.href} className="flex items-center gap-3 hover:text-gold-300">

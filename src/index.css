@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* `ar:` variant for Arabic-specific tweaks (e.g. `ar:leading-snug`). */
+@custom-variant ar (&:where(:lang(ar), :lang(ar) *));
+
 /*
  * Brand tokens, taken from the company profile: deep charcoal surfaces, white,
  * and a metallic gold gradient accent.
@@ -22,7 +25,10 @@
   --color-gold-600: #b98a36;
   --color-gold-700: #8c6a24;
 
-  --font-sans: 'Montserrat Variable', 'Montserrat Fallback', ui-sans-serif, system-ui, sans-serif;
+  /* Montserrat for Latin; Cairo covers Arabic glyphs automatically. */
+  --font-sans:
+    'Montserrat Variable', 'Cairo Variable', 'Montserrat Fallback', ui-sans-serif, system-ui,
+    sans-serif;
 
   --gradient-gold: linear-gradient(
     100deg,
@@ -114,6 +120,14 @@
     outline-offset: 3px;
   }
 
+  /*
+   * Letter-spacing breaks the joins between Arabic letters, so tracking utilities are
+   * neutralised for Arabic text. Latin brand names inside Arabic pages carry lang="en".
+   */
+  :where(:lang(ar)) {
+    letter-spacing: normal !important;
+  }
+
   ::selection {
     background-color: var(--color-gold-300);
     color: var(--color-charcoal-950);
@@ -155,4 +169,17 @@
       transition: none;
     }
   }
+}
+
+/*
+ * Arabic glyphs read smaller than Latin at the same size, so the smallest text sizes are
+ * nudged up on Arabic pages. Unlayered so it applies over the utility classes.
+ */
+.text-xs:lang(ar) {
+  font-size: 0.8125rem;
+}
+
+.text-\[0\.6875rem\]:lang(ar),
+.text-\[0\.625rem\]:lang(ar) {
+  font-size: 0.75rem;
 }

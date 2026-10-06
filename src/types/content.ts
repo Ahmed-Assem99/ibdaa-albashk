@@ -10,7 +10,8 @@ export interface ImageAsset {
   placeholder?: boolean
 }
 
-export type ServiceCategory = 'transmission' | 'solar' | 'oil-gas' | 'telecom' | 'civil'
+export const serviceCategories = ['transmission', 'solar', 'oil-gas', 'telecom', 'civil'] as const
+export type ServiceCategory = (typeof serviceCategories)[number]
 
 export interface Service {
   id: ServiceCategory
@@ -58,6 +59,11 @@ export interface ProjectReference {
 export interface Partner {
   name: string
   sector: string
+  /**
+   * Official logo, e.g. `{ src: '/images/partners/bp.svg', alt: 'BP', width: 120, height: 48 }`.
+   * Without one, the name is shown as a styled wordmark.
+   */
+  logo?: ImageAsset
 }
 
 export interface Stat {
@@ -83,6 +89,29 @@ export interface CompanyDocument {
   description: string
   /** Path under /public/docs. Leave undefined to show "Available on request". */
   file?: string
+}
+
+export interface CompanyText {
+  name: string
+  logo: { first: string; second: string; subtitle: string }
+  tagline: string
+  description: string
+  addressLines: string[]
+  workingHours: string
+}
+
+/** A photo in the hero's angled frames, captioned with its business line. */
+export interface HeroPanel {
+  category: ServiceCategory
+  image: ImageAsset
+}
+
+/** One line of the hero title; segments with `accent` render in gold. */
+export type HeroTitleLine = { text: string; accent?: boolean }[]
+
+export interface NavItem {
+  label: string
+  to: string
 }
 
 export interface PageMeta {

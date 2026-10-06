@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/i18n/Link'
 import { ChevronRight } from 'lucide-react'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { Container } from './Container'
 import { DiagonalDivider } from './DiagonalDivider'
 import { Highlight } from './Highlight'
@@ -27,6 +27,7 @@ export function PageHeader({
   breadcrumbs = [],
   children,
 }: PageHeaderProps) {
+  const { ui } = useContent()
   return (
     <header className="relative overflow-hidden surface-dark pt-[calc(var(--header-height)+3.5rem)] pb-28 sm:pb-36">
       <div
@@ -38,7 +39,7 @@ export function PageHeader({
         className="absolute -end-32 -top-24 h-[140%] w-1/2 bg-charcoal-950 [clip-path:polygon(78%_0,100%_0,100%_100%,30%_100%)] rtl:-scale-x-100"
       />
       <Container className="relative">
-        <nav aria-label="Breadcrumb">
+        <nav aria-label={ui.breadcrumb}>
           <ol className="flex flex-wrap items-center gap-1 text-xs tracking-wider text-charcoal-200 uppercase">
             {[{ label: ui.home, to: '/' }, ...breadcrumbs].map((crumb, i, all) => (
               <li key={crumb.label} className="flex items-center gap-1">

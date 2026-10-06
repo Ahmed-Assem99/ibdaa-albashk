@@ -9,21 +9,20 @@ import { GalleryGrid } from '@/components/ui/GalleryGrid'
 import { Img } from '@/components/ui/Img'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { getProject, projects } from '@/data/projects'
-import { categoryLabels } from '@/data/services'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { useSeo } from '@/hooks/useSeo'
 import type { Project } from '@/types/content'
 import { NotFoundPage } from './NotFoundPage'
 
 export function ProjectDetailPage() {
   const { slug = '' } = useParams()
-  const project = getProject(slug)
+  const project = useContent().projects.find((p) => p.slug === slug)
   if (!project) return <NotFoundPage />
   return <ProjectDetail project={project} />
 }
 
 function ProjectDetail({ project }: { project: Project }) {
+  const { ui, projects, categoryLabels } = useContent()
   useSeo({ title: project.title, description: project.summary, image: project.cover.src })
 
   const photos = [project.cover, ...project.gallery].filter((image) => !image.placeholder)
@@ -47,7 +46,7 @@ function ProjectDetail({ project }: { project: Project }) {
       <PageHeader
         title={project.title}
         intro={project.summary}
-        breadcrumbs={[{ label: 'Projects', to: '/projects' }, { label: project.title }]}
+        breadcrumbs={[{ label: ui.pages.projects, to: '/projects' }, { label: project.title }]}
       >
         <div className="mt-6 flex flex-wrap gap-2 ps-6">
           <Badge tone="gold">{ui.status[project.status]}</Badge>

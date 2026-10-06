@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@/i18n/Link'
 import { ArrowRight } from 'lucide-react'
 import { Img } from '@/components/ui/Img'
 import type { Service } from '@/types/content'

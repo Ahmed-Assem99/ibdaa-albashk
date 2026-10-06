@@ -7,20 +7,8 @@ import { Img } from '@/components/ui/Img'
 import { PageHeader } from '@/components/ui/PageHeader'
 import { Reveal } from '@/components/ui/Reveal'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import {
-  capabilitiesSection,
-  hse,
-  mission,
-  orgChart,
-  story,
-  values,
-  valuesIntro,
-  vision,
-} from '@/data/about'
 import { company } from '@/data/company'
-import { documents } from '@/data/documents'
-import { aboutPage, pageMeta } from '@/data/pages'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { useSeo } from '@/hooks/useSeo'
 import { cn } from '@/lib/cn'
 
@@ -52,9 +40,11 @@ function CheckList({
   )
 }
 
-const visionMission: { title: string; text: string; points?: string[] }[] = [vision, mission]
-
 export function AboutPage() {
+  const { ui, pageMeta, pages, about, documents, company: text } = useContent()
+  const aboutPage = pages.about
+  const { story, vision, mission, valuesIntro, values, capabilitiesSection, hse, orgChart } = about
+  const visionMission: { title: string; text: string; points?: string[] }[] = [vision, mission]
   useSeo(pageMeta.about)
 
   return (
@@ -63,7 +53,7 @@ export function AboutPage() {
         title={aboutPage.title}
         highlight={aboutPage.highlight}
         intro={aboutPage.intro}
-        breadcrumbs={[{ label: 'About' }]}
+        breadcrumbs={[{ label: ui.pages.about }]}
       />
 
       {/* Story */}
@@ -95,21 +85,25 @@ export function AboutPage() {
               height={160}
               className="relative mx-auto size-40"
             />
-            <p className="relative mt-6 text-sm font-semibold tracking-[0.2em] text-white uppercase">
+            <p
+              lang="en"
+              dir="ltr"
+              className="relative mt-6 text-sm font-semibold tracking-[0.2em] text-white uppercase"
+            >
               {company.legalName}
             </p>
             <p lang="ar" dir="rtl" className="relative mt-3 text-sm leading-relaxed text-gold-100">
               {company.legalNameAr}
             </p>
             <p className="relative mt-6 text-xs tracking-[0.24em] text-gold-300 uppercase">
-              {company.tagline}
+              {text.tagline}
             </p>
           </Reveal>
         </Container>
       </section>
 
       {/* Vision & mission */}
-      <section aria-label="Vision and mission" className="bg-charcoal-50 py-24">
+      <section aria-label={ui.about.visionMissionLabel} className="bg-charcoal-50 py-24">
         <Container className="grid gap-6 md:grid-cols-2">
           {visionMission.map((block, i) => (
             <Reveal
@@ -137,8 +131,8 @@ export function AboutPage() {
           <SectionHeading
             id="values-title"
             tone="dark"
-            title="Our values"
-            highlight="values"
+            title={ui.about.valuesTitle}
+            highlight={ui.about.valuesHighlight}
             intro={valuesIntro}
           />
           <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
@@ -214,9 +208,9 @@ export function AboutPage() {
           </div>
           <div className="mt-14 grid gap-10 md:grid-cols-3">
             {[
-              { title: 'Workforce', items: capabilitiesSection.workforce },
-              { title: 'Equipment fleet', items: capabilitiesSection.fleet },
-              { title: 'Workshops & maintenance', items: capabilitiesSection.maintenance },
+              { title: ui.about.workforce, items: capabilitiesSection.workforce },
+              { title: ui.about.fleet, items: capabilitiesSection.fleet },
+              { title: ui.about.maintenance, items: capabilitiesSection.maintenance },
             ].map((group, i) => (
               <Reveal key={group.title} delay={i * 0.08}>
                 <h3 className="border-b border-charcoal-200 pb-3 text-sm font-semibold tracking-[0.18em] text-charcoal-900 uppercase">
@@ -339,7 +333,7 @@ export function AboutPage() {
               icon={<Download className="size-4" />}
               className="self-start lg:self-auto"
             >
-              Company profile (PDF)
+              {ui.companyProfile}
             </Button>
           </div>
           <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

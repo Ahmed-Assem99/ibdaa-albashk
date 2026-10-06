@@ -1,16 +1,17 @@
 import { useRef } from 'react'
-import { Link, NavLink } from 'react-router'
+import { Link, NavLink } from '@/i18n/Link'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
-import { mainNav } from '@/data/navigation'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
+import { LanguageSwitch } from '@/i18n/LanguageSwitch'
 import { useScrolled } from '@/hooks/useScrolled'
 import { cn } from '@/lib/cn'
 import { Logo } from './Logo'
 import { MobileMenu } from './MobileMenu'
 
 export function Navbar() {
+  const { ui, nav } = useContent()
   const scrolled = useScrolled()
   const menuRef = useRef<HTMLDialogElement>(null)
 
@@ -24,13 +25,13 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-[var(--header-height)] items-center justify-between gap-6">
-        <Link to="/" className="shrink-0" aria-label={`${ui.home} – Ibdaa Albashq`}>
+        <Link to="/" className="shrink-0">
           <Logo />
         </Link>
 
         <nav aria-label={ui.primaryNavLabel} className="hidden lg:block">
           <ul className="flex items-center gap-8">
-            {mainNav.map((item) => (
+            {nav.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
@@ -52,6 +53,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <LanguageSwitch className="px-2 py-2" />
           <Button to="/contact" className="hidden sm:inline-flex">
             {ui.contactCta}
           </Button>

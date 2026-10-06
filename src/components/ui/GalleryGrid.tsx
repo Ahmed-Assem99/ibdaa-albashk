@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Expand } from 'lucide-react'
-import { ui } from '@/data/ui'
+import { useContent } from '@/i18n/useLocale'
 import { cn } from '@/lib/cn'
 import type { ImageAsset } from '@/types/content'
 import { Img } from './Img'
@@ -13,6 +13,7 @@ interface GalleryGridProps {
 
 /** Masonry-style photo grid; each photo opens in the lightbox. */
 export function GalleryGrid({ images, className }: GalleryGridProps) {
+  const { ui } = useContent()
   const [open, setOpen] = useState<number | null>(null)
 
   return (

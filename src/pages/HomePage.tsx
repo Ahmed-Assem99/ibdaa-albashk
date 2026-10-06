@@ -1,5 +1,5 @@
 import { CtaBand } from '@/components/sections/CtaBand'
-import { pageMeta } from '@/data/pages'
+import { useContent } from '@/i18n/useLocale'
 import { useSeo } from '@/hooks/useSeo'
 import { Hero } from './home/Hero'
 import {
@@ -11,7 +11,7 @@ import {
 } from './home/HomeSections'
 
 export function HomePage() {
-  useSeo(pageMeta.home)
+  useSeo(useContent().pageMeta.home)
 
   return (
     <>

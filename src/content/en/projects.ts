@@ -1,4 +1,4 @@
-import type { ImageAsset, Project, ProjectReference } from '../types/content'
+import type { ImageAsset, Project, ProjectReference } from '../../types/content'
 
 const P = '/images/projects'
 
@@ -422,151 +422,145 @@ export const projects: Project[] = [
   },
 ]
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug)
-}
-
-export const featuredProjects = projects.filter((p) => p.featured)
-
 /**
  * "Projects of Subcontract with Eshraqat Al Iraq Company" table from the brochure.
  * TODO: confirm this list can be published and how our role should be described.
  */
-export const projectReferencesTitle = 'Subcontract project references'
-export const projectReferencesNote =
-  'Projects carried out as a subcontractor with Eshraqat Al Iraq Company.'
-
-export const projectReferences: ProjectReference[] = [
-  {
-    no: 1,
-    name: 'Supply & lay a sewage pipeline in Hay Al-Falahiyah',
-    place: 'Basra',
-    client: 'ICRC',
-  },
-  {
-    no: 2,
-    name: 'Improvement of the drinking water at Abdulla Abu Najim',
-    place: 'Basra',
-    client: 'ICRC',
-  },
-  {
-    no: 3,
-    name: 'Supply, installation and operation of a water complex with network in Abu Kubra (Al Maymona)',
-    place: 'Maysan',
-    client: 'Water Directorate of Missan',
-  },
-  {
-    no: 4,
-    name: 'Rehabilitation of a primary health care centre',
-    place: 'Al Najaf',
-    client: 'ICRC',
-  },
-  {
-    no: 5,
-    name: 'Supply and delivery of consumables, tools and fittings for PCIHBV',
-    place: 'Basra',
-    client: 'Petronas',
-  },
-  {
-    no: 6,
-    name: 'First phase work for DPABI',
-    place: 'Basra',
-    client: 'Daqing Petroleum Administrative Bureau Iraq Branch',
-  },
-  {
-    no: 7,
-    name: 'Preliminary geotechnical investigation of Halfaya oilfield',
-    place: 'Halfaya',
-    client: 'China Petroleum Engineering Co. Ltd',
-  },
-  {
-    no: 8,
-    name: 'Geotechnical investigation and topographic survey of Habbaniyah airport',
-    place: 'Halfaya',
-    client: 'SWP1 Expansion',
-  },
-  {
-    no: 9,
-    name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'ISF & Check Point',
-  },
-  {
-    no: 10,
-    name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'Bridge',
-  },
-  {
-    no: 11,
-    name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'GPP',
-  },
-  {
-    no: 12,
-    name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'Water Intake Area of SWP1 Expansion',
-  },
-  {
-    no: 13,
-    name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'Central Waste Facility',
-  },
-  {
-    no: 14,
-    name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'Overhead Transmission Line from CPF2 to CPF3',
-  },
-  {
-    no: 15,
-    name: 'Geotechnical investigation for pipeline, OHTL and roads (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'Coasls',
-  },
-  {
-    no: 16,
-    name: 'Geotechnical investigation for pipeline, OHTL and roads (China Petroleum Engineering Co. Ltd supervision)',
-    place: 'Halfaya',
-    client: 'Main Road',
-  },
-  {
-    no: 17,
-    name: 'Piling preparation and road works for Basra Power Station',
-    place: 'Basra',
-    client: '–',
-  },
-  {
-    no: 18,
-    name: 'Rotary bored concrete piles inside CPF, West Qurna-2 field (WQ2)',
-    place: 'West Qurna-2',
-    client: 'LUKOIL Mid-East Ltd.',
-  },
-  {
-    no: 19,
-    name: 'Concrete piles, steel piles and sheet-pile soil retaining works in Shatt Al-Arab for the Al-Gharraf oil field water intake',
-    place: 'Basra',
-    client: 'Kuwait Energy Oil & Gas',
-  },
-  {
-    no: 20,
-    name: 'Construction of two intermediate stations at various locations within Basra Governorate',
-    place: 'Basra',
-    client: '–',
-  },
-  {
-    no: 21,
-    name: 'Construction of two intermediate stations at various locations within Basra Governorate',
-    place: 'Basra',
-    client: '–',
-  },
-  {
-    no: 22,
-    name: 'Widening and rehabilitation of the Al-Diwaniyah entrance road (8.25 km) and maintenance of Al-Mutlaq bridge',
-    place: 'Al-Diwaniyah',
-    client: 'Ministry of Construction and Housing',
-  },
-]
+export const projectReferences: { title: string; note: string; items: ProjectReference[] } = {
+  title: 'Subcontract project references',
+  note: 'Projects carried out as a subcontractor with Eshraqat Al Iraq Company.',
+  items: [
+    {
+      no: 1,
+      name: 'Supply & lay a sewage pipeline in Hay Al-Falahiyah',
+      place: 'Basra',
+      client: 'ICRC',
+    },
+    {
+      no: 2,
+      name: 'Improvement of the drinking water at Abdulla Abu Najim',
+      place: 'Basra',
+      client: 'ICRC',
+    },
+    {
+      no: 3,
+      name: 'Supply, installation and operation of a water complex with network in Abu Kubra (Al Maymona)',
+      place: 'Maysan',
+      client: 'Water Directorate of Missan',
+    },
+    {
+      no: 4,
+      name: 'Rehabilitation of a primary health care centre',
+      place: 'Al Najaf',
+      client: 'ICRC',
+    },
+    {
+      no: 5,
+      name: 'Supply and delivery of consumables, tools and fittings for PCIHBV',
+      place: 'Basra',
+      client: 'Petronas',
+    },
+    {
+      no: 6,
+      name: 'First phase work for DPABI',
+      place: 'Basra',
+      client: 'Daqing Petroleum Administrative Bureau Iraq Branch',
+    },
+    {
+      no: 7,
+      name: 'Preliminary geotechnical investigation of Halfaya oilfield',
+      place: 'Halfaya',
+      client: 'China Petroleum Engineering Co. Ltd',
+    },
+    {
+      no: 8,
+      name: 'Geotechnical investigation and topographic survey of Habbaniyah airport',
+      place: 'Halfaya',
+      client: 'SWP1 Expansion',
+    },
+    {
+      no: 9,
+      name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'ISF & Check Point',
+    },
+    {
+      no: 10,
+      name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'Bridge',
+    },
+    {
+      no: 11,
+      name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'GPP',
+    },
+    {
+      no: 12,
+      name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'Water Intake Area of SWP1 Expansion',
+    },
+    {
+      no: 13,
+      name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'Central Waste Facility',
+    },
+    {
+      no: 14,
+      name: 'Geotechnical investigation for buildings and stations (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'Overhead Transmission Line from CPF2 to CPF3',
+    },
+    {
+      no: 15,
+      name: 'Geotechnical investigation for pipeline, OHTL and roads (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'Coasls',
+    },
+    {
+      no: 16,
+      name: 'Geotechnical investigation for pipeline, OHTL and roads (China Petroleum Engineering Co. Ltd supervision)',
+      place: 'Halfaya',
+      client: 'Main Road',
+    },
+    {
+      no: 17,
+      name: 'Piling preparation and road works for Basra Power Station',
+      place: 'Basra',
+      client: '–',
+    },
+    {
+      no: 18,
+      name: 'Rotary bored concrete piles inside CPF, West Qurna-2 field (WQ2)',
+      place: 'West Qurna-2',
+      client: 'LUKOIL Mid-East Ltd.',
+    },
+    {
+      no: 19,
+      name: 'Concrete piles, steel piles and sheet-pile soil retaining works in Shatt Al-Arab for the Al-Gharraf oil field water intake',
+      place: 'Basra',
+      client: 'Kuwait Energy Oil & Gas',
+    },
+    {
+      no: 20,
+      name: 'Construction of two intermediate stations at various locations within Basra Governorate',
+      place: 'Basra',
+      client: '–',
+    },
+    {
+      no: 21,
+      name: 'Construction of two intermediate stations at various locations within Basra Governorate',
+      place: 'Basra',
+      client: '–',
+    },
+    {
+      no: 22,
+      name: 'Widening and rehabilitation of the Al-Diwaniyah entrance road (8.25 km) and maintenance of Al-Mutlaq bridge',
+      place: 'Al-Diwaniyah',
+      client: 'Ministry of Construction and Housing',
+    },
+  ],
+}
