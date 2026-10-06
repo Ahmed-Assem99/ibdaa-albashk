@@ -27,7 +27,7 @@ export function TrustStrip() {
               {partner.logo && (
                 <Img
                   image={{ ...partner.logo, alt: '' }}
-                  className="size-11 shrink-0 object-contain opacity-80 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 sm:size-12"
+                  className="size-11 shrink-0 object-contain transition duration-300 motion-safe:group-hover:scale-110 sm:size-12"
                 />
               )}
               <span className={partner.logo ? 'text-start' : 'text-center'}>

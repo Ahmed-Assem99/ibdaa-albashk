@@ -69,7 +69,7 @@ The 22-row "Projects of Subcontract with Eshraqat Al Iraq Company" table is copi
 
 `src/content/en/partners.ts`: Kalpataru, BP, Eni, ZAIN, and **Kuwait Energy** (added from the brochure documents; remove it if you prefer). The sector labels under each name (e.g. "Power transmission & solar" for Kalpataru) are my wording. Confirm or edit.
 
-**Logos:** the strip now shows each logo beside the company name, in grayscale, turning to full colour on hover. You sent the five logos as images in the chat, but they weren't saved as files I could access. Commit them to `public/images/partners/` (or attach them as files) and add a `logo` to each entry in `src/content/en/partners.ts` (see IMAGES.md); until then each company shows its name only. Please confirm you have permission to use each logo.
+**Logos:** added from the files you supplied. Each company's symbol is shown beside its name in full colour. Please confirm you have permission to use each logo.
 
 ## 6. Copy assumptions
 

@@ -94,6 +94,13 @@ export const imageAlts: Record<string, string> = {
   '/images/team/site-inspection.webp': 'جولة تفتيش ميدانية مع فريق المشروع',
   '/images/team/hse-training-sessions.webp': 'جلسات تدريب على السلامة في مكتب الموقع',
 
+  // Partner logos
+  '/images/partners/kalpataru.webp': 'شعار كالباتارو',
+  '/images/partners/bp.webp': 'شعار بي بي',
+  '/images/partners/eni.webp': 'شعار إيني',
+  '/images/partners/zain.webp': 'شعار زين',
+  '/images/partners/kuwait-energy.webp': 'شعار كويت إنرجي',
+
   // Gallery
   '/images/gallery/foundation-excavation-crew.webp': 'طاقم يعمل على الأسس داخل حفرية',
   '/images/gallery/concrete-pour.webp': 'صبّ الخرسانة من خلاطة متنقلة',

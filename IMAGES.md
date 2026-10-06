@@ -34,15 +34,19 @@ Every image on the site is a file in `public/images/`, referenced by path from t
 
 The hero has no background photo. Three site photos sit in angled gold frames beside the title. They are set in `hero.panels` in `src/content/en/home.ts` (currently `gallery/transmission-corridor.webp`, `services/telecom.webp` and `services/oil-gas.webp`). Replace them with sharp portrait photos (about 800×1100) of transmission, telecom and oil & gas work, or point `src` at new files.
 
-### `partners/`: partner logos (empty for now)
+### `partners/`: partner logos
 
-Put official logos here (SVG preferred, or a transparent PNG about 240 px wide), then add a `logo` to the matching entry in `src/content/en/partners.ts`:
+Each company's symbol (cropped from the logo files you supplied, background removed), shown in a 48 px box beside its name in the strip under the hero, in full colour. Set in `src/content/en/partners.ts`; the Arabic page reuses them (Arabic alt text in `src/content/ar/image-alts.ts`).
 
-```ts
-{ name: 'BP', sector: 'Oil & gas', logo: { src: '/images/partners/bp.svg', alt: 'BP', width: 120, height: 48 } },
-```
+| File                                  | Size    | Symbol         |
+| ------------------------------------- | ------- | -------------- |
+| `/images/partners/kalpataru.webp`     | 145×145 | Tree mark      |
+| `/images/partners/bp.webp`            | 190×192 | Helios         |
+| `/images/partners/eni.webp`           | 160×132 | Six-legged dog |
+| `/images/partners/zain.webp`          | 162×152 | Swirl          |
+| `/images/partners/kuwait-energy.webp` | 117×129 | Knot mark      |
 
-Each logo appears in a 48 px box beside the company name, in grayscale, turning to full colour on hover. Crop logos tightly with a transparent background so they read well at that size. The Arabic page reuses them automatically. Until a logo is added, the company name is shown as a styled wordmark. Use logos only with each company's permission.
+To replace one, drop in a transparent, tightly cropped square-ish file with the same name and update its `width`/`height`. Use logos only with each company's permission.
 
 ### `services/`: recommended 800×800 (square, subject centred)
 
