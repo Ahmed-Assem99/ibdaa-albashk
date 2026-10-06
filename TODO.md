@@ -20,7 +20,7 @@ Search the code for `TODO` to find each item in place (`grep -rn TODO src`). Pro
 
 ## 2. Branding and wording to confirm
 
-- **Tagline:** English is shown exactly as in the brochure, "Together We Building Iraq". Consider "Together, We Build Iraq". The Arabic version is "معاً نبني العراق". (`src/content/{en,ar}/company.ts` → `tagline`)
+- **Tagline:** confirmed as "Together, We Build Iraq" (corrected from the brochure's "Together We Building Iraq"); Arabic "معاً نبني العراق". Update the brochure to match. (`src/content/{en,ar}/company.ts` → `tagline`)
 - **English name spelling:** the site uses "Ibdaa Albashq". The brochure and documents also use "Albashk", "Albashik" and "Albasshik". Pick one.
 - **Arabic legal name:** the site uses "شركة إبداع الباشق للمقاولات العامة والتجارة العامة والنقل العام المحدودة". The documents use both "ابداع" and "أبداع" and differ slightly in word order. Confirm the official form. (`company.ts` → `legalNameAr`)
 - **Logo:** `src/assets/logo.svg` is the eagle mark traced from the PDF's vector artwork. Swap it for the official master file if you have one.

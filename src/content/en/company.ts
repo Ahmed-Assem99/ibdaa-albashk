@@ -4,9 +4,8 @@ export const companyText: CompanyText = {
   name: 'Ibdaa Albashq',
   /** Shown next to the logo mark. */
   logo: { first: 'Ibdaa', second: 'Albashq', subtitle: 'General Contracting' },
-  // TODO: the brochure reads "Together We Building Iraq". Confirm the exact wording
-  // (a grammatical alternative would be "Together, We Build Iraq").
-  tagline: 'Together We Building Iraq',
+  // Corrected from the brochure's "Together We Building Iraq".
+  tagline: 'Together, We Build Iraq',
   description:
     'Iraqi contractor delivering high-voltage transmission lines and substations, solar PV, oil & gas and telecommunications works across southern Iraq.',
   // TODO: confirm the final office address. The brochure lists Baghdad – Almansoor;
