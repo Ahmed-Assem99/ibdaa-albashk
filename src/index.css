@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+/* Brand tokens taken from the company profile: charcoal + gold gradient. */
+@theme {
+  --color-charcoal-950: #1c1b1f;
+  --color-charcoal-900: #2b2a2e;
+  --color-charcoal-800: #3f3e43;
+  --color-charcoal-600: #6d6c72;
+  --color-charcoal-400: #807f85;
+
+  --color-gold-100: #f6f0bc;
+  --color-gold-300: #f1d27a;
+  --color-gold-400: #ecc767;
+  --color-gold-500: #d4a64a;
+  --color-gold-600: #b8873a;
+
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: 'Cairo', ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility bg-gold-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-gold-500) 0%,
+    var(--color-gold-100) 35%,
+    var(--color-gold-400) 70%,
+    var(--color-gold-500) 100%
+  );
+}
+
+@utility text-gold-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-gold-500),
+    var(--color-gold-100),
+    var(--color-gold-400)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-charcoal-900 bg-white font-sans antialiased;
+  }
+
+  [dir='rtl'] body {
+    @apply font-arabic;
+  }
+}
