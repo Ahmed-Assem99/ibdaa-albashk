@@ -1,0 +1,86 @@
+/**
+ * Interface strings (buttons, labels, messages). Keeping them here, together with the
+ * page data files, means an Arabic version can be added by providing translated copies.
+ */
+export const ui = {
+  skipToContent: 'Skip to content',
+  menuOpen: 'Open menu',
+  menuClose: 'Close menu',
+  primaryNavLabel: 'Main',
+  contactCta: 'Contact Us',
+  home: 'Home',
+  backToProjects: 'All projects',
+  viewProject: 'View project',
+  status: { completed: 'Completed', ongoing: 'Ongoing' },
+  projectMeta: {
+    category: 'Category',
+    location: 'Location',
+    client: 'Client / partner',
+    period: 'Period',
+    status: 'Status',
+    scope: 'Scope of work',
+    gallery: 'Gallery',
+    related: 'Related projects',
+  },
+  lightbox: {
+    close: 'Close',
+    previous: 'Previous photo',
+    next: 'Next photo',
+    open: 'Open photo',
+    counter: (i: number, n: number) => `${i} of ${n}`,
+  },
+  documents: { download: 'Download PDF', onRequest: 'Available on request' },
+  footer: {
+    quickLinks: 'Quick links',
+    services: 'Services',
+    contact: 'Contact',
+    rights: (year: number, legalName: string) => `© ${year} ${legalName}`,
+  },
+  contact: {
+    address: 'Address',
+    phone: 'Phone',
+    email: 'Email',
+    hours: 'Working hours',
+    mapTitle: 'Office location map',
+  },
+  form: {
+    name: 'Full name',
+    company: 'Company',
+    email: 'Email',
+    phone: 'Phone',
+    service: 'Service of interest',
+    servicePlaceholder: 'Select a service',
+    serviceOther: 'Other / general enquiry',
+    message: 'Message',
+    optional: '(optional)',
+    submit: 'Send message',
+    submitting: 'Sending…',
+    honeypot: 'Leave this field empty',
+    errors: {
+      required: 'This field is required.',
+      email: 'Enter a valid email address.',
+      phone: 'Enter a valid phone number.',
+      messageLength: 'Please write at least 20 characters.',
+      summary: 'Please fix the highlighted fields.',
+    },
+    success: {
+      title: 'Thank you, your message has been sent.',
+      text: 'We will get back to you as soon as possible.',
+    },
+    mailto: {
+      title: 'Your email app should now open.',
+      text: 'If it didn’t, email us directly at',
+    },
+    failure: {
+      title: 'Your message could not be sent.',
+      text: 'Please try again, or contact us by phone or email.',
+    },
+    again: 'Send another message',
+  },
+  notFound: {
+    code: '404',
+    title: 'Page not found',
+    text: 'The page you’re looking for doesn’t exist or has moved.',
+    cta: 'Back to home',
+  },
+} as const

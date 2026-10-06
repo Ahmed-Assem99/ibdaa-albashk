@@ -1,54 +1,158 @@
 @import 'tailwindcss';
 
-/* Brand tokens taken from the company profile: charcoal + gold gradient. */
+/*
+ * Brand tokens, taken from the company profile: deep charcoal surfaces, white,
+ * and a metallic gold gradient accent.
+ */
 @theme {
-  --color-charcoal-950: #1c1b1f;
-  --color-charcoal-900: #2b2a2e;
-  --color-charcoal-800: #3f3e43;
-  --color-charcoal-600: #6d6c72;
-  --color-charcoal-400: #807f85;
+  --color-charcoal-50: #f7f6f6;
+  --color-charcoal-100: #eeeded;
+  --color-charcoal-200: #d8d5d6;
+  --color-charcoal-400: #9c989a;
+  --color-charcoal-600: #6b6769;
+  --color-charcoal-700: #4a4648;
+  --color-charcoal-800: #3a3638;
+  --color-charcoal-900: #2b2729;
+  --color-charcoal-950: #1e1b1d;
 
-  --color-gold-100: #f6f0bc;
-  --color-gold-300: #f1d27a;
-  --color-gold-400: #ecc767;
-  --color-gold-500: #d4a64a;
-  --color-gold-600: #b8873a;
+  --color-gold-100: #f6efb9;
+  --color-gold-300: #efc869;
+  --color-gold-500: #d9a94f;
+  /* Darker golds for text on white (gold-700 = 5:1 contrast). */
+  --color-gold-600: #b98a36;
+  --color-gold-700: #8c6a24;
 
-  --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-  --font-arabic: 'Cairo', ui-sans-serif, system-ui, sans-serif;
-}
+  --font-sans: 'Montserrat Variable', 'Montserrat Fallback', ui-sans-serif, system-ui, sans-serif;
 
-@utility bg-gold-gradient {
-  background-image: linear-gradient(
+  --gradient-gold: linear-gradient(
     100deg,
     var(--color-gold-500) 0%,
     var(--color-gold-100) 35%,
-    var(--color-gold-400) 70%,
+    var(--color-gold-300) 65%,
     var(--color-gold-500) 100%
   );
+  --gradient-gold-deep: linear-gradient(
+    100deg,
+    var(--color-gold-700),
+    var(--color-gold-600) 50%,
+    var(--color-gold-700)
+  );
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Gold gradient as a background (buttons, bars, ribbons). */
+@utility bg-gold-gradient {
+  background-image: var(--gradient-gold);
+}
+
+/* Gold gradient text, for dark surfaces. */
 @utility text-gold-gradient {
-  background-image: linear-gradient(
-    100deg,
-    var(--color-gold-500),
-    var(--color-gold-100),
-    var(--color-gold-400)
-  );
+  background-image: var(--gradient-gold);
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
 }
 
+/* Deeper gold gradient text with enough contrast for large headings on white. */
+@utility text-gold-gradient-deep {
+  background-image: var(--gradient-gold-deep);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Gold gradient border (square corners, matching the angular brand style). */
+@utility border-gold-gradient {
+  border-style: solid;
+  border-image: var(--gradient-gold) 1;
+}
+
+/* Marks a dark surface so focus rings switch to a light gold. */
+@utility surface-dark {
+  --focus-ring: var(--color-gold-300);
+  background-color: var(--color-charcoal-900);
+  color: white;
+}
+
+/* Metric-matched fallback so text doesn't jump when Montserrat loads (reduces CLS). */
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  ascent-override: 84.95%;
+  descent-override: 22.03%;
+  line-gap-override: 0%;
+  size-adjust: 113.39%;
+}
+
 @layer base {
+  :root {
+    --focus-ring: var(--color-gold-700);
+    --header-height: 4.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   html {
-    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
   }
 
   body {
-    @apply text-charcoal-900 bg-white font-sans antialiased;
+    @apply bg-white font-sans text-charcoal-900 antialiased;
   }
 
-  [dir='rtl'] body {
-    @apply font-arabic;
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-300);
+    color: var(--color-charcoal-950);
+  }
+}
+
+/* Mobile menu: slide in from the inline-end edge. */
+@layer components {
+  .mobile-menu {
+    translate: 100% 0;
+    transition:
+      translate 0.3s var(--ease-out-expo),
+      overlay 0.3s allow-discrete,
+      display 0.3s allow-discrete;
+  }
+
+  .mobile-menu[open] {
+    translate: 0 0;
+
+    @starting-style {
+      translate: 100% 0;
+    }
+  }
+
+  [dir='rtl'] .mobile-menu {
+    translate: -100% 0;
+  }
+
+  [dir='rtl'] .mobile-menu[open] {
+    translate: 0 0;
+
+    @starting-style {
+      translate: -100% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu {
+      transition: none;
+    }
   }
 }
