@@ -69,7 +69,7 @@ The 22-row "Projects of Subcontract with Eshraqat Al Iraq Company" table is copi
 
 `src/content/en/partners.ts`: Kalpataru, BP, Eni, ZAIN, and **Kuwait Energy** (added from the brochure documents; remove it if you prefer). The sector labels under each name (e.g. "Power transmission & solar" for Kalpataru) are my wording. Confirm or edit.
 
-**Logos:** you asked for each company's logo. I couldn't download them: this environment's network policy blocks Wikimedia Commons and the image CDNs, and none of these companies is in the icon packages available through npm. I also didn't redraw anyone's trademark by hand. The strip already supports logos: send me the official files (SVG or transparent PNG), or put them in `public/images/partners/` and add a `logo` to each entry (see IMAGES.md). They display in grayscale and turn to full colour on hover. Until then each company shows as a styled wordmark. Please confirm you have permission to use each logo.
+**Logos:** the strip now shows each logo beside the company name, in grayscale, turning to full colour on hover. You sent the five logos as images in the chat, but they weren't saved as files I could access. Commit them to `public/images/partners/` (or attach them as files) and add a `logo` to each entry in `src/content/en/partners.ts` (see IMAGES.md); until then each company shows its name only. Please confirm you have permission to use each logo.
 
 ## 6. Copy assumptions
 

@@ -14,31 +14,32 @@ export function TrustStrip() {
   const { partners } = useContent()
   return (
     <section aria-labelledby="partners-title" className="bg-white">
-      <Container className="flex flex-col items-center gap-6 py-10 lg:flex-row lg:gap-12">
+      <Container className="py-12">
         <h2
           id="partners-title"
-          className="shrink-0 text-xs font-semibold tracking-[0.24em] text-gold-700 uppercase"
+          className="text-center text-xs font-semibold tracking-[0.24em] text-gold-700 uppercase"
         >
           {partners.heading}
         </h2>
-        <ul className="flex flex-1 flex-wrap items-center justify-center gap-x-10 gap-y-4 lg:justify-between">
+        <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
           {partners.list.map((partner) => (
-            <li key={partner.name} className="group flex flex-col items-center text-center">
-              {partner.logo ? (
+            <li key={partner.name} className="group flex items-center justify-center gap-3">
+              {partner.logo && (
                 <Img
-                  image={partner.logo}
-                  className="h-10 w-auto max-w-36 object-contain opacity-70 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 sm:h-12"
+                  image={{ ...partner.logo, alt: '' }}
+                  className="size-11 shrink-0 object-contain opacity-80 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0 sm:size-12"
                 />
-              ) : (
+              )}
+              <span className={partner.logo ? 'text-start' : 'text-center'}>
                 <span
                   lang="en"
-                  className="block text-xl font-extrabold tracking-[0.14em] text-charcoal-700 uppercase sm:text-2xl"
+                  className="block text-base leading-tight font-extrabold tracking-[0.1em] text-charcoal-700 uppercase sm:text-lg"
                 >
                   {partner.name}
                 </span>
-              )}
-              <span className="mt-1 block text-[0.6875rem] tracking-wider text-charcoal-600 uppercase">
-                {partner.sector}
+                <span className="mt-1 block text-[0.6875rem] tracking-wider text-charcoal-600 uppercase">
+                  {partner.sector}
+                </span>
               </span>
             </li>
           ))}

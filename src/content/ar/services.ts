@@ -3,7 +3,7 @@ import { capabilities as enCapabilities, services as enServices } from '../en/se
 import type { CapabilityIcon, Service, ServiceCategory } from '../../types/content'
 
 export const categoryLabels: SiteContent['categoryLabels'] = {
-  transmission: 'خطوط النقل ومحطات التحويل',
+  transmission: 'خطوط النقل الكهربائية ومحطات التحويل',
   solar: 'الطاقة الشمسية',
   'oil-gas': 'النفط والغاز',
   telecom: 'الاتصالات',

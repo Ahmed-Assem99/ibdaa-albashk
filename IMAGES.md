@@ -42,7 +42,7 @@ Put official logos here (SVG preferred, or a transparent PNG about 240 px wide),
 { name: 'BP', sector: 'Oil & gas', logo: { src: '/images/partners/bp.svg', alt: 'BP', width: 120, height: 48 } },
 ```
 
-Logos appear in grayscale and turn to full colour on hover. The Arabic page reuses them automatically. Until a logo is added, the company name is shown as a styled wordmark. Use logos only with each company's permission.
+Each logo appears in a 48 px box beside the company name, in grayscale, turning to full colour on hover. Crop logos tightly with a transparent background so they read well at that size. The Arabic page reuses them automatically. Until a logo is added, the company name is shown as a styled wordmark. Use logos only with each company's permission.
 
 ### `services/`: recommended 800×800 (square, subject centred)
 

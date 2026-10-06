@@ -113,7 +113,8 @@ export function Hero() {
                     className="absolute inset-0 size-full scale-125 skew-x-6 object-cover rtl:-skew-x-6"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/10 to-transparent" />
-                  <figcaption className="absolute inset-x-0 bottom-0 skew-x-6 px-3 pb-3 text-[0.625rem] leading-tight font-semibold tracking-[0.16em] text-gold-100 uppercase sm:px-4 sm:pb-4 sm:text-xs rtl:-skew-x-6">
+                  {/* Captions are hidden on phones, where the frames are too narrow for them. */}
+                  <figcaption className="absolute inset-x-0 bottom-0 hidden skew-x-6 px-3 pb-3 text-[0.6875rem] leading-snug font-semibold tracking-[0.08em] text-balance text-gold-100 uppercase sm:block lg:px-2.5 lg:text-[0.625rem] lg:tracking-[0.05em] xl:px-4 xl:pb-4 xl:text-xs xl:tracking-[0.12em] rtl:-skew-x-6">
                     {categoryLabels[panel.category]}
                   </figcaption>
                 </div>
