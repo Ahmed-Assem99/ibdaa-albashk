@@ -1,10 +1,11 @@
 import { m } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Award } from 'lucide-react'
 import logoUrl from '@/assets/logo.svg'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { DiagonalDivider } from '@/components/ui/DiagonalDivider'
 import { Img } from '@/components/ui/Img'
+import { Link } from '@/i18n/Link'
 import { useContent } from '@/i18n/useLocale'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -94,6 +95,19 @@ export function Hero() {
               {hero.secondaryCta.label}
             </Button>
           </m.div>
+          <m.div {...fadeUp(0.45)} className="mt-8">
+            <Link
+              to={`/#${home.landmark.id}`}
+              className="group inline-flex items-center gap-2.5 border border-gold-500/40 bg-white/5 px-4 py-2.5 text-sm font-semibold text-gold-100 backdrop-blur-sm transition hover:border-gold-300 hover:text-white"
+            >
+              <Award aria-hidden="true" className="size-4 shrink-0 text-gold-300" />
+              {home.landmark.badge}
+              <ArrowRight
+                aria-hidden="true"
+                className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100"
+              />
+            </Link>
+          </m.div>
         </div>
 
         {/* Angled photo frames from real project sites. */}
@@ -114,8 +128,9 @@ export function Hero() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/10 to-transparent" />
                   {/* Captions are hidden on phones, where the frames are too narrow for them. */}
-                  <figcaption className="absolute inset-x-0 bottom-0 hidden skew-x-6 px-3 pb-3 text-[0.6875rem] leading-snug font-semibold tracking-[0.08em] text-balance text-gold-100 uppercase sm:block lg:px-2.5 lg:text-[0.625rem] lg:tracking-[0.05em] xl:px-4 xl:pb-4 xl:text-xs xl:tracking-[0.12em] rtl:-skew-x-6">
-                    {categoryLabels[panel.category]}
+                  <figcaption className="absolute inset-x-0 bottom-0 hidden skew-x-6 px-3 pb-3 text-xs leading-snug font-semibold tracking-[0.02em] text-balance text-gold-100 sm:block lg:px-2.5 lg:text-[0.6875rem] lg:tracking-normal xl:px-4 xl:pb-4 xl:text-sm xl:tracking-[0.04em] rtl:-skew-x-6">
+                    {/* Keep "&" with the following word so it never sits alone on a line. */}
+                    {categoryLabels[panel.category].replace(' & ', ' &\u00a0')}
                   </figcaption>
                 </div>
               </figure>

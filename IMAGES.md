@@ -34,6 +34,14 @@ Every image on the site is a file in `public/images/`, referenced by path from t
 
 The hero has no background photo. Three site photos sit in angled gold frames beside the title. They are set in `hero.panels` in `src/content/en/home.ts` (currently `gallery/transmission-corridor.webp`, `services/telecom.webp` and `services/oil-gas.webp`). Replace them with sharp portrait photos (about 800×1100) of transmission, telecom and oil & gas work, or point `src` at new files.
 
+### `landmark/`: Asia's tallest tower feature
+
+| File                                       | Size     | Used in                                                        |
+| ------------------------------------------ | -------- | -------------------------------------------------------------- |
+| `/images/landmark/tallest-tower-186m.webp` | 1280×960 | content/en/home.ts (`landmark.image`), Home → landmark section |
+
+Your aerial photo of the 186 m tower. It's shown in a portrait crop (4:5), centred on the tower, so keep the tower in the middle of any replacement photo.
+
 ### `partners/`: partner logos
 
 Each company's symbol (cropped from the logo files you supplied, background removed), shown in a 48 px box beside its name in the strip under the hero, in full colour. Set in `src/content/en/partners.ts`; the Arabic page reuses them (Arabic alt text in `src/content/ar/image-alts.ts`).

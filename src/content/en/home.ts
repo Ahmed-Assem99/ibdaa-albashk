@@ -58,6 +58,33 @@ export const hero = {
   panels: heroPanels,
 }
 
+const landmarkImage: ImageAsset = {
+  src: '/images/landmark/tallest-tower-186m.webp',
+  alt: 'Aerial view of the 186-metre high-voltage transmission tower flying the Iraqi flag beside a waterway',
+  width: 1280,
+  height: 960,
+}
+
+/**
+ * Landmark achievement featured on the home page and linked from the hero badge.
+ * TODO: confirm the project name, location, client and year, and keep a source for the
+ * "tallest in Asia" claim (e.g. a client letter or press coverage).
+ */
+export const landmark = {
+  id: 'landmark',
+  badge: 'Builders of Asia’s tallest transmission tower · 186 m',
+  eyebrow: 'Landmark achievement',
+  title: 'Asia’s tallest high-voltage transmission tower',
+  highlight: 'tallest',
+  height: 186,
+  unit: 'm',
+  heightLabel: 'Tower height',
+  text: 'Our crews carried out the construction, erection and conductor stringing of a 186-metre high-voltage transmission tower, the tallest in Asia. A milestone for our team and for Iraq’s power network.',
+  scope: ['Construction', 'Tower erection', 'Conductor stringing'],
+  cta: { label: 'View transmission projects', to: '/projects?category=transmission' },
+  image: landmarkImage,
+}
+
 export const servicesSection = {
   title: 'Core services',
   highlight: 'services',

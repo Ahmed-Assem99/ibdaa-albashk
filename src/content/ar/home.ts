@@ -1,5 +1,10 @@
 import type { SiteContent } from '../en'
-import { finalCta as enFinal, hero as enHero, safetyTeaser as enSafety } from '../en/home'
+import {
+  finalCta as enFinal,
+  hero as enHero,
+  landmark as enLandmark,
+  safetyTeaser as enSafety,
+} from '../en/home'
 
 type Home = SiteContent['home']
 
@@ -11,6 +16,21 @@ export const hero: Home['hero'] = {
   primaryCta: { label: 'استعرض المشاريع', to: enHero.primaryCta.to },
   secondaryCta: { label: 'تواصل معنا', to: enHero.secondaryCta.to },
   panels: enHero.panels,
+}
+
+export const landmark: Home['landmark'] = {
+  id: enLandmark.id,
+  badge: 'منفّذو أعلى برج لنقل الطاقة الكهربائية في آسيا · 186 م',
+  eyebrow: 'إنجاز بارز',
+  title: 'أعلى برج لنقل الطاقة الكهربائية ذات الجهد العالي في آسيا',
+  highlight: 'أعلى',
+  height: enLandmark.height,
+  unit: 'م',
+  heightLabel: 'ارتفاع البرج',
+  text: 'نفّذت كوادرنا أعمال إنشاء ونصب وسحب موصلات برج لنقل الطاقة الكهربائية ذات الجهد العالي بارتفاع 186 متراً، وهو الأعلى في آسيا. إنجاز نفخر به لفريقنا ولشبكة الكهرباء في العراق.',
+  scope: ['الإنشاء', 'نصب البرج', 'سحب الموصلات'],
+  cta: { label: 'استعرض مشاريع خطوط النقل', to: enLandmark.cta.to },
+  image: enLandmark.image,
 }
 
 export const servicesSection: Home['servicesSection'] = {

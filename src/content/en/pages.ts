@@ -5,7 +5,7 @@ export const pageMeta = {
   home: {
     title: 'High-Voltage, Solar, Oil & Gas and Telecom Contractor in Iraq',
     description:
-      'Ibdaa Albashq is an Iraqi contractor delivering 400kV transmission lines and substations, solar PV, oil & gas piping and maintenance, and telecom infrastructure in Basra and southern Iraq.',
+      'Ibdaa Albashq is an Iraqi contractor and builder of Asia’s tallest high-voltage transmission tower (186 m), delivering 400kV transmission lines and substations, solar PV, oil & gas and telecom infrastructure in Basra and southern Iraq.',
   },
   projects: {
     title: 'Projects',

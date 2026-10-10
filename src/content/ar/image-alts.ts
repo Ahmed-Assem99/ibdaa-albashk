@@ -94,6 +94,10 @@ export const imageAlts: Record<string, string> = {
   '/images/team/site-inspection.webp': 'جولة تفتيش ميدانية مع فريق المشروع',
   '/images/team/hse-training-sessions.webp': 'جلسات تدريب على السلامة في مكتب الموقع',
 
+  // Landmark
+  '/images/landmark/tallest-tower-186m.webp':
+    'منظر جوي لبرج نقل الطاقة الكهربائية بارتفاع 186 متراً يرفرف عليه العلم العراقي بجانب مجرى مائي',
+
   // Partner logos
   '/images/partners/kalpataru.webp': 'شعار كالباتارو',
   '/images/partners/bp.webp': 'شعار بي بي',

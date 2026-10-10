@@ -31,6 +31,14 @@ Updated with your figures: **+10** years of experience, **+25** projects deliver
 
 - **Asphalt & concrete plants** on the About page still shows `2`, from the brochure. Confirm it is current. (`src/content/en/about.ts`)
 
+## 3b. Landmark: Asia's tallest transmission tower (186 m)
+
+Featured on the home page (section under the partner strip) and linked from a badge in the hero; also mentioned in the home page's search description. Content is in `src/content/{en,ar}/home.ts` → `landmark`.
+
+- **Keep evidence for "tallest in Asia":** a superlative claim like this can be challenged. Keep a source to hand (a client letter, contract or press coverage) and, if possible, cite it or link it from the site.
+- **Project details:** the project name, location (the photo shows a waterway), client and year aren't stated. Tell me and I'll add the tower as its own project page, or link it to the 400kV OHTL project if it's part of that work.
+- **Scope wording:** "construction, erection and conductor stringing", from your description.
+
 ## 4. Projects (`src/content/en/projects.ts`, Arabic text in `src/content/ar/projects.ts`)
 
 ### Placeholder projects (visible on the site with "TODO: confirm details")

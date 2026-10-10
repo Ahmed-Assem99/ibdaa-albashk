@@ -62,7 +62,7 @@ export function ServicesSection() {
   return (
     <section
       aria-labelledby="services-title"
-      className="relative overflow-hidden surface-dark py-24 [clip-path:polygon(0_3rem,100%_0,100%_100%,0_100%)] sm:py-32"
+      className="relative overflow-hidden surface-dark py-24 sm:py-32"
     >
       <div
         aria-hidden="true"
